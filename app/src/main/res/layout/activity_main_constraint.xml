@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        tools:context=".MainActivity"
+        tools:layout_editor_absoluteX="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="1dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="556dp"
+            android:text="@string/lab2gui"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.982" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="181dp"
+            android:layout_height="129dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="212dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="343dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/flag" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="172dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="415dp"
+            android:layout_marginEnd="215dp"
+            android:layout_marginBottom="215dp"
+            android:onClick="onClick"
+            android:text="@string/ButtonText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Switch
+            android:id="@+id/s"
+            android:layout_width="177dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="224dp"
+            android:layout_marginTop="415dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="215dp"
+            android:text="@string/s"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/textInputLayout4"
+            android:layout_width="407dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="-112dp"
+            tools:layout_editor_absoluteY="2dp" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="264dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="98dp"
+            android:layout_marginTop="546dp"
+            android:layout_marginEnd="73dp"
+            android:layout_marginBottom="138dp"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:inputType="textPersonName"
+            android:text="@string/EnterName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.428" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
