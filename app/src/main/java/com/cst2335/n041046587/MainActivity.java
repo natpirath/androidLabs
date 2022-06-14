@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -15,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextViewEmail;
-    private ImageButton ButtonLogin;
+    private ImageButton button;
 
     public static final String SP = "Shared Preferences";
     public static final String EMAIL = "email";
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_lab3);
 
         editTextViewEmail = (EditText) findViewById(R.id.editTextEmail);
-        ButtonLogin = findViewById(R.id.button);
+        button = (ImageButton) findViewById( R.id.button);
 
         /*
          * load user's email address from SharedPreferences
@@ -44,10 +45,13 @@ public class MainActivity extends AppCompatActivity {
         /*
          * Give a message when clicking the Click Here button
          */
-        ButtonLogin.setOnClickListener(view -> {
-            Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
-            goToProfile.putExtra("email", editTextViewEmail.getText().toString());
-            startActivity(goToProfile);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
+                goToProfile.putExtra("email", editTextViewEmail.getText().toString());
+                startActivity(goToProfile);
+            }
         });
 
         }
