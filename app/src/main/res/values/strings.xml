@@ -8,7 +8,7 @@
     <string name="toast_message">Here is more information</string>
     <string name="s_on">The Switch is now On</string>
     <string name="s_off">The Switch is now Off</string>
-    <string name="textViewLab3">Enter your email here:</string>
+    <string name="textViewEmail">Enter your email here:</string>
     <string name="TypeEmailHere">Type email here</string>
     <string name="textViewPassword">Type your password: </string>
     <string name="loginButton">Login</string>

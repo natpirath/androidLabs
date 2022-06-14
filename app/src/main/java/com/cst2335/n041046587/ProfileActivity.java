@@ -22,7 +22,6 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextName;
     private ImageButton button;
-    ImageView imgView;
     public static final String TAG = "PROFILE_ACTIVITY";
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -30,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_lab3);
+        setContentView(R.layout.activity_profile);
 
         Log.e(TAG, " in function: " + "onCreate");
 
@@ -47,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 if (result.getResultCode() == Activity.RESULT_OK)
                                 { Intent data = result.getData();
                                     Bitmap imgbitmap = (Bitmap) data.getExtras().get("data");
-                                    imgView.setImageBitmap(imgbitmap); // the imageButton
+                                    button.setImageBitmap(imgbitmap); // the imageButton
                                 }
                                 else if(result.getResultCode() == Activity.RESULT_CANCELED)
                                     Log.i(TAG, "User refused to capture a picture.");

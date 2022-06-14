@@ -9,7 +9,7 @@
     <string name="toast_message">Aqui tem mais informacoes</string>
     <string name="s_on">O Switch esta Ativo</string>
     <string name="s_off">O Switch esta Inativo</string>
-    <string name="textViewLab3">Insira o seu email:</string>
+    <string name="textViewEmail">Insira o seu email:</string>
     <string name="TypeEmailHere">Escreva seu email aqui</string>
     <string name="textViewPassword">Insira sua senha: </string>
     <string name="loginButton">Login</string>
