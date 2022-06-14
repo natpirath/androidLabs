@@ -19,9 +19,10 @@ import android.widget.ImageView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private EditText editTextEmail;
     private EditText editTextName;
+    private EditText editTextEmail;
     private ImageButton button;
+
     public static final String TAG = "PROFILE_ACTIVITY";
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -53,18 +54,19 @@ public class ProfileActivity extends AppCompatActivity {
                             }
                         } );
 
+        // get intent from MainActivity
+        Intent fromMain = getIntent();
+        editTextEmail.setText(fromMain.getStringExtra("email"));
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null)
                     myPictureTakerLauncher.launch(takePictureIntent);
-                }
-
             }
         });
-
     }
 
 
