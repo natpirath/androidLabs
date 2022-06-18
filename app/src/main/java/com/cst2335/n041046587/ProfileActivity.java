@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -23,9 +24,11 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText editTextEmail;
     private ImageButton button;
 
+
     public static final String TAG = "PROFILE_ACTIVITY";
     static final int REQUEST_IMAGE_CAPTURE = 1;
-
+    Button GoToChatButton;
+    private ActivityResultLauncher<Intent> ChatRoomActivityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class ProfileActivity extends AppCompatActivity {
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         ImageButton button = findViewById( R.id.button);
+        GoToChatButton = (Button)findViewById(R.id.GoToChatButton);
+
 
 
         ActivityResultLauncher<Intent> myPictureTakerLauncher =
@@ -67,6 +72,29 @@ public class ProfileActivity extends AppCompatActivity {
                     myPictureTakerLauncher.launch(takePictureIntent);
             }
         });
+
+        // You can do the assignment inside onAttach or onCreate, i.e, before the activity is displayed
+        ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            // There are no request codes
+                            Intent data = result.getData();
+
+                        }
+                    }
+                });
+
+        GoToChatButton.setOnClickListener( b -> {
+
+            //Give directions to go from this page, to SecondActivity
+            Intent nextPage = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+            //Now make the transition:
+            someActivityResultLauncher.launch(nextPage);
+        });
+
     }
 
 

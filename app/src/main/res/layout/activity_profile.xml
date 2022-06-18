@@ -59,4 +59,10 @@
         android:layout_height="wrap_content"
         android:text="@string/clickAbove" />
 
+    <Button
+        android:id="@+id/GoToChatButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GoToChatButton" />
+
 </LinearLayout>
