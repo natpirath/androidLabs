@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     Button buttonSend;
     private SQLiteDatabase db;
     ChatAdapter adapter;
+    private RelativeLayout relativeLayout;
 
 
     @Override
@@ -49,6 +51,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         typeHere = (EditText) findViewById(R.id.typeHere);
         buttonSend = (Button) findViewById(R.id.buttonSend);
         buttonReceive = (Button) findViewById(R.id.buttonReceive);
+        relativeLayout = findViewById(R.id.RelativeLayout);
 
 
         // Get a database
@@ -180,6 +183,20 @@ public class ChatRoomActivity extends AppCompatActivity {
                         messageModelList2.remove(position);
                         adapter.notifyDataSetChanged();
 
+                        Snackbar.make(relativeLayout, "You removed item# " + position, Snackbar.LENGTH_LONG)
+                                .setAction("Undo", (click2)->{
+                                    messageModelList2.add(position, whatWasClicked);
+                                    adapter.notifyDataSetChanged();
+                                    //reinsert into database
+                                    db.execSQL( String.format( " Insert into %s values (\"%d\", \"%s\", \"%s\" ,\"%s\" );",
+                                            DatabaseOpenHelper.TABLE_NAME, whatWasClicked.getId(), whatWasClicked.getMessage(), 1 , whatWasClicked.isSend()));
+
+                                })
+                                .show();
+                        //delete from database:, returns number of rows deleted
+                        db.delete(DatabaseOpenHelper.TABLE_NAME,
+                                DatabaseOpenHelper.COL_ID +" = ?", new String[] { Long.toString( whatWasClicked.getId() )  });
+
                     })
                     //What the No button does:
                     .setNegativeButton("No", (click, arg) -> {
@@ -194,39 +211,6 @@ public class ChatRoomActivity extends AppCompatActivity {
 
     }
 
-//    private void viewMessage() {
-//        Cursor cursor = db.getAllMessages();
-//        Log.d("message", String.valueOf(cursor.getCount()));
-//
-//        if (cursor.getCount() != 0) {
-//            while (cursor.moveToNext()) {
-//                MessageStorage model = new MessageStorage(cursor.getString(1), cursor.getInt(2) == 0 ? true : false, cursor.getLong(0));
-//                messageModelList2.add(model);
-//                ChatAdapter adt = new ChatAdapter(messageModelList2, getApplicationContext());
-//                lv.setAdapter(adt);
-//
-//            }
-//        }
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 345) {
-//            if (resultCode == RESULT_OK) //if you hit the delete button instead of back button
-//            {
-//                long id = data.getLongExtra("db_id", 0);
-//                deleteMessageId((int) id);
-//            }
-//        }
-//    }
-//
-//    public void deleteMessageId(int id) {
-//
-//        db.deleteEntry(id);
-//        messageModelList2.clear();
-//        viewMessage();
-//    }
 
 
 
