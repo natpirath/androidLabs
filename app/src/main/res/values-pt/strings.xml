@@ -24,4 +24,8 @@
     <string name="buttonSend">Enviar</string>
     <string name="buttonReceive">Receber</string>
     <string name="typeHere">Escreva Aqui</string>
+    <string name="messageFragment">Mensagem aqui</string>
+    <string name="IDMessage">ID=</string>
+    <string name="Hide">Esconder</string>
+    <string name="CBFragment">É uma mensagem enviada</string>
 </resources>

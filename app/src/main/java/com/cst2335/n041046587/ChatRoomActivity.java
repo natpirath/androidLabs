@@ -3,6 +3,8 @@ package com.cst2335.n041046587;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentValues;
@@ -20,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -35,11 +38,13 @@ public class ChatRoomActivity extends AppCompatActivity {
     ListView lv;
     EditText typeHere;
     List<MessageStorage> messageModelList2 = new ArrayList<>();
+
     Button buttonReceive;
     Button buttonSend;
     private SQLiteDatabase db;
     ChatAdapter adapter;
     private RelativeLayout relativeLayout;
+    boolean isTablet = false;
 
 
     @Override
@@ -52,6 +57,9 @@ public class ChatRoomActivity extends AppCompatActivity {
         buttonSend = (Button) findViewById(R.id.buttonSend);
         buttonReceive = (Button) findViewById(R.id.buttonReceive);
         relativeLayout = findViewById(R.id.RelativeLayout);
+        isTablet = findViewById(R.id.FrameLayout) != null;
+
+
 
 
         // Get a database
@@ -90,11 +98,27 @@ public class ChatRoomActivity extends AppCompatActivity {
         adapter = new ChatAdapter(messageModelList2, this);
         lv.setAdapter(adapter);
 
-        lv.setOnItemClickListener((list, item, position, id) -> {
+        lv.setOnItemClickListener((list, view, position, id) -> {
             Bundle dataToPass = new Bundle();
             dataToPass.putString("item", messageModelList2.get(position).message);
             dataToPass.putInt("id", position);
             dataToPass.putLong("db_id", messageModelList2.get(position).id);
+
+            if (isTablet){
+                DetailsFragment detailsFragment = new DetailsFragment(); //add a DetailFragment
+                detailsFragment.setArguments( dataToPass ); //pass it a bundle for information
+                detailsFragment.setTablet(true);  //tell the fragment if it's running on a tablet or not
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.FrameLayout, detailsFragment) //Add the fragment in FrameLayout
+                        .addToBackStack("Anything here") //make the back button undo the transaction
+                        .commit(); //actually load the fragment.
+            }else {
+                Intent emptyActivity = new Intent(this, EmptyActivity.class);
+                emptyActivity.putExtras(dataToPass);
+                startActivity(emptyActivity);
+            }
 
         });
 
@@ -164,6 +188,8 @@ public class ChatRoomActivity extends AppCompatActivity {
                     typeHere.setText("");
                 }
             }
+
+
         });
 
 
@@ -182,6 +208,13 @@ public class ChatRoomActivity extends AppCompatActivity {
                     .setPositiveButton("Yes", (click, arg) -> {
                         messageModelList2.remove(position);
                         adapter.notifyDataSetChanged();
+
+//                        if (isTablet) {
+//
+//                            }
+
+
+
 
                         Snackbar.make(relativeLayout, "You removed item# " + position, Snackbar.LENGTH_LONG)
                                 .setAction("Undo", (click2)->{
@@ -207,11 +240,11 @@ public class ChatRoomActivity extends AppCompatActivity {
                     .setNeutralButton("Maybe", (click, arg) -> {
                     }).show();
             return true;
+
+
         });
 
     }
-
-
 
 
     public void printCursor(Cursor c) {
