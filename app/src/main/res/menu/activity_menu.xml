@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/MenuActivity">
+
+    <item
+        android:id="@+id/item1"
+        android:icon="@drawable/info_icon"
+        android:orderInCategory="100"
+        android:title="@string/item1"
+        app:showAsAction="always" />  <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+    <item
+        android:id="@+id/item2"
+        android:icon="@drawable/trash_icon"
+        android:orderInCategory="200"
+        android:title="@string/item2"
+        app:showAsAction="always" />  <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+    <item
+        android:id="@+id/item3"
+        android:icon="@drawable/plus_icon"
+        android:orderInCategory="300"
+        android:title="@string/item3"
+        app:showAsAction="always" />  <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+
+    <item
+        android:id="@+id/item4"
+        android:title="@string/item4"
+        android:orderInCategory="400"
+        app:showAsAction="never" />
+
+</menu>

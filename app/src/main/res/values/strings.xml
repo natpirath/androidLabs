@@ -27,5 +27,13 @@
     <string name="IDMessage">ID=</string>
     <string name="Hide">Hide</string>
     <string name="CBFragment">Is a Send Message</string>
-
+    <string name="toolBarButton">Go to Toolbar Page</string>
+    <string name="item1">Item 1</string>
+    <string name="item2">Item 2</string>
+    <string name="item3">Item 3</string>
+    <string name="item4">Item 4</string>
+    <string name="BackToChatButton">Chat Page</string>
+    <string name="BackToProfileButton">Go back to Profile</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

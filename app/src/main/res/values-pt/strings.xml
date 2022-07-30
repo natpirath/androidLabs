@@ -28,4 +28,13 @@
     <string name="IDMessage">ID=</string>
     <string name="Hide">Esconder</string>
     <string name="CBFragment">É uma mensagem enviada</string>
+    <string name="toolBarButton">Ir para a barra de ferramentas</string>
+    <string name="item1">Item 1</string>
+    <string name="item2">Item 2</string>
+    <string name="item3">Item 3</string>
+    <string name="item4">Item 4</string>
+    <string name="BackToChatButton">Ir para o Bate Papo</string>
+    <string name="BackToProfileButton">Ir para o Perfil</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

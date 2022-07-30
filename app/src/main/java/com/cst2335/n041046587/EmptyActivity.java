@@ -21,6 +21,5 @@ public class EmptyActivity extends AppCompatActivity {
                 .replace(R.id.FrameLayout, detailsFragment)
                 .addToBackStack("Anything here")
                 .commit();
-
     }
 }

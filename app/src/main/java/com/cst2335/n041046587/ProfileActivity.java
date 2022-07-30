@@ -28,6 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
     public static final String TAG = "PROFILE_ACTIVITY";
     static final int REQUEST_IMAGE_CAPTURE = 1;
     Button GoToChatButton;
+    Button toolBarButton;
     private ActivityResultLauncher<Intent> ChatRoomActivityResultLauncher;
 
     @Override
@@ -41,6 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         ImageButton button = findViewById( R.id.button);
         GoToChatButton = (Button)findViewById(R.id.GoToChatButton);
+        toolBarButton = (Button)findViewById(R.id.toolBarButton);
 
 
 
@@ -94,6 +96,17 @@ public class ProfileActivity extends AppCompatActivity {
             //Now make the transition:
             someActivityResultLauncher.launch(nextPage);
         });
+
+        //Go to the toolbar page
+        toolBarButton.setOnClickListener( b -> {
+
+            //Give directions to go from this page, to SecondActivity
+            Intent nextPage = new Intent(ProfileActivity.this, TestToolbar.class);
+            //Now make the transition:
+            someActivityResultLauncher.launch(nextPage);
+        });
+
+
 
     }
 
